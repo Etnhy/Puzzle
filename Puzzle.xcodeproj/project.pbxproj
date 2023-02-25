@@ -18,6 +18,7 @@
 		7A14A11429AA3F9C00B16C15 /* PuzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */; };
 		7A14A11629AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */; };
 		7A9AE81C29AA4355000A7A3A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */; };
+		7A9AE81F29AA501E000A7A3A /* MenuButtonsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE81E29AA501E000A7A3A /* MenuButtonsSettings.swift */; };
 		FA23565EC91A52253BBBC91D /* Pods_PuzzleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735B5137C2BAB202EA7C42E4 /* Pods_PuzzleTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITests.swift; sourceTree = "<group>"; };
 		7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7A9AE81E29AA501E000A7A3A /* MenuButtonsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonsSettings.swift; sourceTree = "<group>"; };
 		9497D0BC992F1CDAF7E835C1 /* Pods-Puzzle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle.release.xcconfig"; path = "Target Support Files/Pods-Puzzle/Pods-Puzzle.release.xcconfig"; sourceTree = "<group>"; };
 		C80F4E3C25D4130D5D80269C /* Pods-Puzzle-PuzzleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle-PuzzleUITests.release.xcconfig"; path = "Target Support Files/Pods-Puzzle-PuzzleUITests/Pods-Puzzle-PuzzleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D12E60080BE4554DB25B5461 /* Pods-PuzzleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleTests.release.xcconfig"; path = "Target Support Files/Pods-PuzzleTests/Pods-PuzzleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */,
+				7A9AE81E29AA501E000A7A3A /* MenuButtonsSettings.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 			files = (
 				7A14A0F729AA3F9C00B16C15 /* MainViewController.swift in Sources */,
 				7A14A0F329AA3F9C00B16C15 /* AppDelegate.swift in Sources */,
+				7A9AE81F29AA501E000A7A3A /* MenuButtonsSettings.swift in Sources */,
 				7A14A0F529AA3F9C00B16C15 /* SceneDelegate.swift in Sources */,
 				7A9AE81C29AA4355000A7A3A /* MenuViewController.swift in Sources */,
 			);
