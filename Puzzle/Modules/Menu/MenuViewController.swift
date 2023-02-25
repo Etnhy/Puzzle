@@ -64,7 +64,7 @@ extension MenuViewController {
     @objc fileprivate func buttonsAction(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            self.navigationController?.pushViewController(PlayViewController(), animated: true)
+            self.navigationController?.pushViewController(LevelsViewController(), animated: true)
         case 1: print("1")
         case 2: print("2")
         case 3: print("3")
@@ -74,22 +74,3 @@ extension MenuViewController {
     }
 }
 
-import SwiftUI
-
-struct ViewControllerProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let viewControlle = MenuViewController()
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return viewControlle
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-    
-}

@@ -8,10 +8,10 @@
 import UIKit
 
 class PlayViewController: MainViewController {
-    
-    let levelsTopTitle: UIImageView = {
+
+    let backGroundFrameImageView: UIImageView = {
        var view = UIImageView()
-        view.image = UIImage(named: "levels")
+        view.image = UIImage(named:"play_frame")
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -19,59 +19,108 @@ class PlayViewController: MainViewController {
     lazy var playCollectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.dataSource = self
-        collection.delegate = self
-        collection.register(UINib(nibName: PlayCellItem.identifier, bundle: nil), forCellWithReuseIdentifier: PlayCellItem.identifier)
-        return collection
+//        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 0
+        var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.dataSource = self
+        view.delegate = self
+        view.register(UINib(nibName: PuzzleCell.identifier, bundle: nil), forCellWithReuseIdentifier: PuzzleCell.identifier)
+        view.backgroundColor = .clear
+        
+//        view.dragInteractionEnabled = true
+//        view.dragDelegate = self
+//        view.dropDelegate = self
+        return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.mainBackButton.isHidden = false
-        addSubviews()
+    let playImagesString:[String]
+    
+     init(playImagesString: [String]) {
+        self.playImagesString = playImagesString
+         super.init(nibName: nil, bundle: nil)
     }
+    
 
     
-    //MARK: - Add Subviews
-    private func addSubviews() {
-        view.addSubview(levelsTopTitle)
-        view.addSubview(playCollectionView)
-        setupConstraints()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+
     }
-    
-    //MARK: - Setup Constraints
-    private func setupConstraints() {
-        levelsTopTitle.snp.makeConstraints { make in
+    fileprivate func setupView () {
+        view.addSubview(backgroundImageCandy)
+        view.addSubview(playCollectionView)
+        backgroundImageCandy.snp.makeConstraints { make in
+            make.size.equalTo(CGSize(width: 350, height: 357))
+            make.top.equalTo(self.view).offset(120)
             make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(46)
-            make.size.equalTo(CGSize(width: 104, height: 53))
         }
         playCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(levelsTopTitle.snp.bottom).offset(60)
-            make.leading.equalTo(self.view).offset(8)
-            make.trailing.equalTo(self.view).inset(8)
+            make.top.equalTo(self.view.snp.top).offset(120)
+            make.leading.equalTo(self.view).offset(28)
+            make.trailing.equalTo(self.view).inset(28)
             make.bottom.equalTo(self.view)
         }
     }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
+ //MARK: - UICollectionViewDragDelegate
+//extension PlayViewController: UICollectionViewDragDelegate {
+//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//        <#code#>
+//    }
+//
+//
+//}
 
-
+ //MARK: - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
 extension PlayViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+//        self.playImagesString.count
+        return playImagesString.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayCellItem.identifier, for: indexPath) as? PlayCellItem else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PuzzleCell.identifier, for: indexPath) as? PuzzleCell else {
             return UICollectionViewCell()
         }
+        cell.puzzleImage.image = UIImage(named: playImagesString[indexPath.item])
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 120)
+        return CGSize(width: 85, height: 85)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
     
 }
+
+import SwiftUI
+
+struct ViewControllerProvider: PreviewProvider {
+    static var previews: some View {
+        ContainerView().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct ContainerView: UIViewControllerRepresentable {
+        
+        let viewControlle = PlayViewController(playImagesString: [])
+        
+        func makeUIViewController(context: Context) -> some UIViewController {
+            return viewControlle
+        }
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
+    }
+    
+}
+
+
