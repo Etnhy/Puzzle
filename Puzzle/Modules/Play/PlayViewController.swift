@@ -26,27 +26,9 @@ class PlayViewController: MainViewController {
         view.delegate = self
         view.register(UINib(nibName: PuzzleCell.identifier, bundle: nil), forCellWithReuseIdentifier: PuzzleCell.identifier)
         view.backgroundColor = .clear
-        //        view.dragInteractionEnabled = true
-        //        view.dragDelegate = self
-        //        view.dropDelegate = self
         view.backgroundColor = .yellow
         return view
     }()
-    
-    //    let playCollectionView: UICollectionView = {
-    //        let layout = PuzzleCollectionViewFlowLayout()
-    //        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    //        collectionView.translatesAutoresizingMaskIntoConstraints = false
-    //        collectionView.backgroundColor = .white
-    //        collectionView.register(UINib(nibName: PuzzleCell.identifier, bundle: nil), forCellWithReuseIdentifier: PuzzleCell.identifier)
-    ////        collectionView.delegate = self
-    ////        collectionView.dataSource = self
-    //        collectionView.dragDelegate = layout
-    //        collectionView.dropDelegate = layout
-    //
-    //        return collectionView
-    //    }()
-    
     var playImagesString:[String]
     
     init(playImagesString: [String]) {
@@ -58,8 +40,6 @@ class PlayViewController: MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        playCollectionView.delegate = self
-        //        playCollectionView.dataSource = self
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
         playCollectionView.addGestureRecognizer(longPressGesture)
         setupView()
