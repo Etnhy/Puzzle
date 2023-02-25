@@ -9,9 +9,9 @@ import UIKit
 
 class PlayViewController: MainViewController {
 
-    let backGroundFrameImageView: UIImageView = {
+    lazy var backGroundFrameImageView: UIImageView = {
        var view = UIImageView()
-        view.image = UIImage(named:"play_frame")
+        view.image = UIImage(named:"candy_frame")
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -48,11 +48,16 @@ class PlayViewController: MainViewController {
 
     }
     fileprivate func setupView () {
-        view.addSubview(backgroundImageCandy)
         view.addSubview(playCollectionView)
-        backgroundImageCandy.snp.makeConstraints { make in
+        view.addSubview(backGroundFrameImageView)
+
+        playCollectionView.backgroundView?.addSubview(backGroundFrameImageView)
+        backGroundFrameImageView.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 350, height: 357))
-            make.top.equalTo(self.view).offset(120)
+            make.top.equalTo(self.view).offset(118)
+//            make.leading.equalTo(self.view).inset(4)
+//            make.trailing.equalTo(self.view).offset(4)
+
             make.centerX.equalTo(self.view)
         }
         playCollectionView.snp.makeConstraints { make in
