@@ -11,6 +11,7 @@ class PuzzleCell: UICollectionViewCell {
     static let identifier = "PuzzleCell"
 
     @IBOutlet weak var puzzleImage: UIImageView!
+    var text = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
