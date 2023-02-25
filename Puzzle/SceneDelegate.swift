@@ -55,8 +55,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     func setupRoot() {
-        let main = MainViewController()
-        let navCon = UINavigationController(rootViewController: main)
+        let menu = MenuViewController()
+        let navCon = UINavigationController(rootViewController: menu)
         self.window?.rootViewController = navCon
         self.window?.makeKeyAndVisible()
     }

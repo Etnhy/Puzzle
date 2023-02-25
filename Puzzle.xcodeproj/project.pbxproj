@@ -17,6 +17,7 @@
 		7A14A10A29AA3F9C00B16C15 /* PuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A10929AA3F9C00B16C15 /* PuzzleTests.swift */; };
 		7A14A11429AA3F9C00B16C15 /* PuzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */; };
 		7A14A11629AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */; };
+		7A9AE81C29AA4355000A7A3A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */; };
 		FA23565EC91A52253BBBC91D /* Pods_PuzzleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735B5137C2BAB202EA7C42E4 /* Pods_PuzzleTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		7A14A10F29AA3F9C00B16C15 /* PuzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITests.swift; sourceTree = "<group>"; };
 		7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9497D0BC992F1CDAF7E835C1 /* Pods-Puzzle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle.release.xcconfig"; path = "Target Support Files/Pods-Puzzle/Pods-Puzzle.release.xcconfig"; sourceTree = "<group>"; };
 		C80F4E3C25D4130D5D80269C /* Pods-Puzzle-PuzzleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle-PuzzleUITests.release.xcconfig"; path = "Target Support Files/Pods-Puzzle-PuzzleUITests/Pods-Puzzle-PuzzleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D12E60080BE4554DB25B5461 /* Pods-PuzzleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleTests.release.xcconfig"; path = "Target Support Files/Pods-PuzzleTests/Pods-PuzzleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,9 +116,9 @@
 		7A14A0F129AA3F9C00B16C15 /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				7A9AE81A29AA4337000A7A3A /* Modules */,
 				7A14A0F229AA3F9C00B16C15 /* AppDelegate.swift */,
 				7A14A0F429AA3F9C00B16C15 /* SceneDelegate.swift */,
-				7A14A0F629AA3F9C00B16C15 /* MainViewController.swift */,
 				7A14A0FB29AA3F9C00B16C15 /* Assets.xcassets */,
 				7A14A0FD29AA3F9C00B16C15 /* LaunchScreen.storyboard */,
 				7A14A10029AA3F9C00B16C15 /* Info.plist */,
@@ -141,6 +143,23 @@
 			path = PuzzleUITests;
 			sourceTree = "<group>";
 		};
+		7A9AE81A29AA4337000A7A3A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7A14A0F629AA3F9C00B16C15 /* MainViewController.swift */,
+				7A9AE81D29AA4359000A7A3A /* Menu */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7A9AE81D29AA4359000A7A3A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		989B880AE4BCDF417088CCDD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +170,6 @@
 				3B44CD268BE4C43D26194646 /* Pods-PuzzleTests.debug.xcconfig */,
 				D12E60080BE4554DB25B5461 /* Pods-PuzzleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -406,6 +424,7 @@
 				7A14A0F729AA3F9C00B16C15 /* MainViewController.swift in Sources */,
 				7A14A0F329AA3F9C00B16C15 /* AppDelegate.swift in Sources */,
 				7A14A0F529AA3F9C00B16C15 /* SceneDelegate.swift in Sources */,
+				7A9AE81C29AA4355000A7A3A /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
