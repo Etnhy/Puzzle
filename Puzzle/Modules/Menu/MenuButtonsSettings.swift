@@ -33,4 +33,12 @@ enum MenuButtons: CaseIterable {
     var backGroundImage: String {
         return "buttonbackground"
     }
+    var setIndex: Int {
+        switch self {
+        case .play: return 0
+        case .gameRules: return 1
+        case .settings: return 2
+        case .privacyPolicy: return 3
+        }
+    }
 }

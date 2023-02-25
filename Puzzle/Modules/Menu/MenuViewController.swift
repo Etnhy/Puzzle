@@ -16,8 +16,11 @@ class MenuViewController: MainViewController {
             var config = UIButton.Configuration.tinted()
             config.background.image = UIImage(named: button.backGroundImage)
             config.baseForegroundColor = UIColor.white
+            
             config.attributedTitle = AttributedString(button.buttonsTitle, attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .bold)]) )
+            butt.tag = button.setIndex
             butt.configuration = config
+            butt.addTarget(self, action: #selector(buttonsAction(_:)), for: .touchUpInside)
             buttons.append(butt)
         }
         return buttons
@@ -37,6 +40,7 @@ class MenuViewController: MainViewController {
         super.viewDidLoad()
         addSubviews()
     }
+
     
     //MARK: - Add Subviews
     private func addSubviews() {
@@ -50,11 +54,25 @@ class MenuViewController: MainViewController {
             make.top.equalTo(self.backgroundImageCandy.snp.bottom).offset(40)
             make.leading.equalTo(self.view).offset(16)
             make.trailing.equalTo(self.view).inset(16)
-            make.bottom.equalTo(self.view).inset(150)
+            make.bottom.equalTo(self.view).inset(180)
         }
     }
 }
 
+ //MARK: -  buttons Actions extension
+extension MenuViewController {
+    @objc fileprivate func buttonsAction(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            self.navigationController?.pushViewController(PlayViewController(), animated: true)
+        case 1: print("1")
+        case 2: print("2")
+        case 3: print("3")
+        default: break
+            
+        }
+    }
+}
 
 import SwiftUI
 
