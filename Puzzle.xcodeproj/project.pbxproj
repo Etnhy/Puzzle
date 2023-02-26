@@ -35,6 +35,7 @@
 		7A9AE83529AA6CE3000A7A3A /* PuzzleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9AE83329AA6CE3000A7A3A /* PuzzleCell.xib */; };
 		7AC06B7F29ABF33B00ABCA2C /* FailGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC06B7E29ABF33B00ABCA2C /* FailGameViewController.swift */; };
 		7AC06B8129ABF35500ABCA2C /* FailGameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AC06B8029ABF35500ABCA2C /* FailGameViewController.storyboard */; };
+		7AC06B8329ABFBCA00ABCA2C /* BackAndLivelTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC06B8229ABFBCA00ABCA2C /* BackAndLivelTime.swift */; };
 		FA23565EC91A52253BBBC91D /* Pods_PuzzleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735B5137C2BAB202EA7C42E4 /* Pods_PuzzleTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		7A9AE83329AA6CE3000A7A3A /* PuzzleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PuzzleCell.xib; sourceTree = "<group>"; };
 		7AC06B7E29ABF33B00ABCA2C /* FailGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailGameViewController.swift; sourceTree = "<group>"; };
 		7AC06B8029ABF35500ABCA2C /* FailGameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FailGameViewController.storyboard; sourceTree = "<group>"; };
+		7AC06B8229ABFBCA00ABCA2C /* BackAndLivelTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackAndLivelTime.swift; sourceTree = "<group>"; };
 		9497D0BC992F1CDAF7E835C1 /* Pods-Puzzle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle.release.xcconfig"; path = "Target Support Files/Pods-Puzzle/Pods-Puzzle.release.xcconfig"; sourceTree = "<group>"; };
 		C80F4E3C25D4130D5D80269C /* Pods-Puzzle-PuzzleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle-PuzzleUITests.release.xcconfig"; path = "Target Support Files/Pods-Puzzle-PuzzleUITests/Pods-Puzzle-PuzzleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D12E60080BE4554DB25B5461 /* Pods-PuzzleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleTests.release.xcconfig"; path = "Target Support Files/Pods-PuzzleTests/Pods-PuzzleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				7AC06B7D29ABF32B00ABCA2C /* FailureVC */,
 				7A4A74A729ABA1B600C6BC4B /* WinVC */,
 				7A9AE83629AA6CE8000A7A3A /* Puzzle */,
+				7AC06B8229ABFBCA00ABCA2C /* BackAndLivelTime.swift */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC06B8329ABFBCA00ABCA2C /* BackAndLivelTime.swift in Sources */,
 				7A3A1F8C29ABAFC5006FABAE /* Fonts.swift in Sources */,
 				7AC06B7F29ABF33B00ABCA2C /* FailGameViewController.swift in Sources */,
 				7A14A0F729AA3F9C00B16C15 /* MainViewController.swift in Sources */,
