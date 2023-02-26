@@ -17,7 +17,7 @@ class MenuViewController: MainViewController {
             config.background.image = UIImage(named: button.backGroundImage)
             config.baseForegroundColor = UIColor.white
             
-            config.attributedTitle = AttributedString(button.buttonsTitle, attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .bold)]) )
+            config.attributedTitle = AttributedString(button.buttonsTitle, attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.knewaveFont(ofSize: 30)]) )
             butt.tag = button.setIndex
             butt.configuration = config
             butt.addTarget(self, action: #selector(buttonsAction(_:)), for: .touchUpInside)

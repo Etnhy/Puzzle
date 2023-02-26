@@ -10,21 +10,33 @@ import UIKit
 class WinViewController: UIViewController {
     static let identifier = "WinViewController"
 
+    @IBOutlet weak var winLab: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        addGestures()
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func addGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        self.winLab.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)
     }
-    */
+    @objc func handleTap(_ sender: UITapGestureRecognizer?) {
+            self.dismiss(animated: true, completion: nil)
+    }
 
+}
+
+//MARK: - UIGestureRecognizerDelegate
+extension WinViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print(touch)
+
+        return touch.view == gestureRecognizer.view
+    }
 }

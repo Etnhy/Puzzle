@@ -128,7 +128,13 @@ extension PlayViewController: UICollectionViewDelegate {
         unsolvedImages.insert(item, at: destinationIndexPath.row)
         
         if unsolvedImages == solvedImages {
-            print("EZ WIN")
+            let win = UIStoryboard(name: WinViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: WinViewController.identifier) as! WinViewController
+            self.addChild(win)
+            self.view.addSubview(win.view)
+            win.view.snp.makeConstraints { make in
+                make.leading.trailing.equalTo(self.view)
+                make.top.bottom.equalTo(self.view)
+            }
         }
     }
 }
