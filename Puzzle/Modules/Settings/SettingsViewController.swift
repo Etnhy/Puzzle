@@ -45,6 +45,8 @@ class SettingsViewController: MainViewController {
         
         return rateus
     }()
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +64,7 @@ class SettingsViewController: MainViewController {
         self.view.addSubview(vibroButton)
         self.view.addSubview(vibroCheckbox)
         self.view.addSubview(rateUsButton)
-        let img = setupTopImage(imageName: "settings")
+        let img = setupTopImage(imageName: "Settings")
         self.view.addSubview(img)
         img.snp.makeConstraints { make in
             make.top.equalTo(view).offset(60)
@@ -106,13 +108,13 @@ class SettingsViewController: MainViewController {
         config.background.image = UIImage(named: "buttonbackground")
         
         self.soundButton.configuration = config
-        self.soundButton.setAttributedTitle(NSAttributedString(string: "Sound",attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30, weight: .bold)])
+        self.soundButton.setAttributedTitle(NSAttributedString(string: "Sound",attributes: [NSAttributedString.Key.font : UIFont.knewaveRegular(ofSize: 34)])
                                             , for: .normal)
         self.vibroButton.configuration = config
-        self.vibroButton.setAttributedTitle(NSAttributedString(string: "Vibro",attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30, weight: .bold)])
+        self.vibroButton.setAttributedTitle(NSAttributedString(string: "Vibro",attributes: [NSAttributedString.Key.font : UIFont.knewaveRegular(ofSize: 34)])
                                             , for: .normal)
         self.rateUsButton.configuration = config
-        self.rateUsButton.setAttributedTitle(NSAttributedString(string: "Rate Us",attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 30, weight: .bold)])
+        self.rateUsButton.setAttributedTitle(NSAttributedString(string: "Rate Us",attributes: [NSAttributedString.Key.font : UIFont.knewaveRegular(ofSize: 34)])
                                              , for: .normal)
 
     }
@@ -155,22 +157,3 @@ class SettingsViewController: MainViewController {
     }
 }
 
-import SwiftUI
-
-struct ViewControllerProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let viewControlle = SettingsViewController()
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return viewControlle
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-    
-}

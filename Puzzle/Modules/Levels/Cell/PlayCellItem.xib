@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="knewave.regular.ttf">
+            <string>Knewave</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,13 +31,6 @@
                             <constraint firstAttribute="height" constant="44" id="vmG-tZ-H0v"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-2d-FgR">
-                        <rect key="frame" x="82" y="85" width="30" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="1Oj-NP-rGv"/>
-                            <constraint firstAttribute="height" constant="27" id="yPZ-Jy-Ib9"/>
-                        </constraints>
-                    </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="candy_frame" translatesAutoresizingMaskIntoConstraints="NO" id="wlH-io-Gde">
                         <rect key="frame" x="0.0" y="-11" width="120" height="141"/>
                         <constraints>
@@ -40,6 +38,17 @@
                             <constraint firstAttribute="width" constant="120" id="rdr-fX-y2z"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obh-UY-5V5">
+                        <rect key="frame" x="85" y="82" width="23" height="34"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="23" id="INL-EI-NLc"/>
+                            <constraint firstAttribute="height" constant="34" id="bQa-Hj-BQW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Knewave" family="Knewave" pointSize="29"/>
+                        <color key="textColor" red="0.90196078431372551" green="0.19607843137254902" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -47,26 +56,27 @@
             <constraints>
                 <constraint firstItem="e0h-Sn-hy1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Aqv-QO-Ell"/>
                 <constraint firstAttribute="trailing" secondItem="wlH-io-Gde" secondAttribute="trailing" id="BR9-DX-Fy7"/>
+                <constraint firstItem="Obh-UY-5V5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="82" id="JTs-ng-Odn"/>
+                <constraint firstItem="Obh-UY-5V5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="85" id="Lk2-jN-j3h"/>
                 <constraint firstItem="wlH-io-Gde" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Mde-T7-Jig"/>
-                <constraint firstAttribute="bottom" secondItem="h9d-2d-FgR" secondAttribute="bottom" constant="8" id="Qk8-ZS-4V7"/>
+                <constraint firstAttribute="trailing" secondItem="Obh-UY-5V5" secondAttribute="trailing" constant="12" id="Vhv-oo-aBx"/>
                 <constraint firstAttribute="bottom" secondItem="Z9E-Cb-ZU6" secondAttribute="bottom" id="WiK-MY-w8X"/>
                 <constraint firstItem="wlH-io-Gde" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="-11" id="dha-kZ-Dos"/>
                 <constraint firstAttribute="trailing" secondItem="e0h-Sn-hy1" secondAttribute="trailing" id="hKe-pO-CD4"/>
                 <constraint firstAttribute="trailing" secondItem="Z9E-Cb-ZU6" secondAttribute="trailing" id="hca-5b-nI1"/>
                 <constraint firstItem="e0h-Sn-hy1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kjq-Po-fPD"/>
                 <constraint firstAttribute="bottom" secondItem="e0h-Sn-hy1" secondAttribute="bottom" id="mYd-sE-t5Z"/>
-                <constraint firstAttribute="trailing" secondItem="h9d-2d-FgR" secondAttribute="trailing" constant="8" id="x5x-ok-Ick"/>
+                <constraint firstAttribute="bottom" secondItem="Obh-UY-5V5" secondAttribute="bottom" constant="4" id="t9c-mN-Bpf"/>
                 <constraint firstAttribute="bottom" secondItem="wlH-io-Gde" secondAttribute="bottom" constant="-10" id="yb8-aJ-O5N"/>
             </constraints>
             <connections>
-                <outlet property="levelNumberImage" destination="h9d-2d-FgR" id="xRS-nQ-26G"/>
+                <outlet property="levelNumberImage" destination="Obh-UY-5V5" id="IAd-Yh-bXS"/>
                 <outlet property="mainLevelImage" destination="e0h-Sn-hy1" id="sOk-hv-R1o"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="-11.267605633802818"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="1" width="21" height="42"/>
         <image name="candy_frame" width="440" height="448"/>
         <image name="ellipse" width="210" height="210"/>
         <image name="level_mainImg_1" width="412" height="413"/>

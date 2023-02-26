@@ -12,7 +12,7 @@ class PlayCellItem: UICollectionViewCell {
 
     
     @IBOutlet weak var mainLevelImage: UIImageView!
-    @IBOutlet weak var levelNumberImage: UIImageView!
+    @IBOutlet weak var levelNumberImage: UILabel!
     
     var levelPuzzle:[String] = []
     var levelTime = Timer()
@@ -23,7 +23,7 @@ class PlayCellItem: UICollectionViewCell {
     }
     public func configureCell(with level: LevelData) {
         self.mainLevelImage.image = UIImage(named: level.mainLevelImage)
-        self.levelNumberImage.image = UIImage(named: level.numberLevelImage)
+        self.levelNumberImage.text = "\(level.numberLevelImage)"
         self.levelPuzzle = level.levelPuzzle
         guard let leveltime = level.levelTime else { return }
         self.levelTime = leveltime

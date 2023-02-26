@@ -31,7 +31,13 @@ class MainViewController: UIViewController {
          view.setImage(UIImage(named: "backArrow"), for: .normal)
          return view
     }()
-
+    
+    let strokeTextAttributes: [NSAttributedString.Key : Any] = [
+        .strokeColor : UIColor(red: 1.00, green: 0.20, blue: 0.82, alpha: 1.00),
+        .foregroundColor : UIColor.white,
+        .strokeWidth : -3.0,
+        ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -68,9 +74,11 @@ class MainViewController: UIViewController {
             make.size.equalTo(CGSize(width: 22, height: 37))
         })
     }
-    public func setupTopImage(imageName: String) -> UIImageView {
-        let topImage = UIImageView()
-        topImage.image = UIImage(named: imageName)
+    public func setupTopImage(imageName: String) -> UILabel {
+        let topImage = UILabel()
+        topImage.font = .knewaveRegular(ofSize: 34)
+        topImage.textColor = .white
+        topImage.attributedText = NSAttributedString(string: imageName,attributes: strokeTextAttributes)
         topImage.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 146, height: 53))
         }
