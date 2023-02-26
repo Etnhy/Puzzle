@@ -29,11 +29,22 @@ class PlayViewController: MainViewController {
         view.backgroundColor = .yellow
         return view
     }()
-    var playImagesString:[String]
     
-    init(playImagesString: [String]) {
-        self.playImagesString = playImagesString
+    let winPictures: UIImageView = {
+       var view = UIImageView()
+        return view
+    }()
+    
+    private var unsolvedImages:[String]
+    private var solvedImages:[String]
+    private var winPic: String
+    
+    init(unsolvedImages: [String],solvedImages: [String], winPic: String) {
+        self.unsolvedImages = unsolvedImages
+        self.solvedImages = solvedImages
+        self.winPic = winPic
         super.init(nibName: nil, bundle: nil)
+
     }
     
     
@@ -43,6 +54,7 @@ class PlayViewController: MainViewController {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
         playCollectionView.addGestureRecognizer(longPressGesture)
         setupView()
+        self.winPictures.image = UIImage(named: winPic)
         
     }
     @objc private func longPressed(_ gesture: UILongPressGestureRecognizer) {
@@ -63,7 +75,7 @@ class PlayViewController: MainViewController {
     fileprivate func setupView () {
         view.addSubview(playCollectionView)
         view.addSubview(backGroundFrameImageView)
-
+        view.addSubview(winPictures)
                 backGroundFrameImageView.snp.makeConstraints { make in
                     make.top.equalTo(self.view).offset(118)
                     make.leading.equalTo(self.view).offset(4)
@@ -75,7 +87,13 @@ class PlayViewController: MainViewController {
             make.top.equalTo(self.view.snp.top).offset(120)
             make.leading.equalTo(self.view).offset(30)
             make.trailing.equalTo(self.view).inset(30)
-            make.bottom.equalTo(self.view)
+            make.height.equalTo(400)
+        }
+        winPictures.snp.makeConstraints { make in
+            make.top.equalTo(playCollectionView.snp.bottom).offset(20)
+            make.centerX.equalTo(self.view)
+            make.size.equalTo(CGSize(width: 230, height: 230))
+            
         }
     }
     
@@ -87,14 +105,14 @@ class PlayViewController: MainViewController {
 //MARK: - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
 extension PlayViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return playImagesString.count
+        return unsolvedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PuzzleCell.identifier, for: indexPath) as? PuzzleCell else {
             return UICollectionViewCell()
         }
-        cell.puzzleImage.image = UIImage(named: playImagesString[indexPath.item])
+        cell.puzzleImage.image = UIImage(named: unsolvedImages[indexPath.item])
         return cell
     }
     
@@ -105,28 +123,15 @@ extension PlayViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
 }
 extension PlayViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = playImagesString.remove(at: sourceIndexPath.row)
-        playImagesString.insert(item, at: destinationIndexPath.row)
+        let item = unsolvedImages.remove(at: sourceIndexPath.row)
+        
+        unsolvedImages.insert(item, at: destinationIndexPath.row)
+        
+        if unsolvedImages == solvedImages {
+            print("EZ WIN")
+        }
     }
 }
 
 
-import SwiftUI
 
-struct ViewControllerProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let viewControlle = PlayViewController(playImagesString: [])
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return viewControlle
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-    
-}

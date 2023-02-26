@@ -68,6 +68,14 @@ class MainViewController: UIViewController {
             make.size.equalTo(CGSize(width: 22, height: 37))
         })
     }
+    public func setupTopImage(imageName: String) -> UIImageView {
+        let topImage = UIImageView()
+        topImage.image = UIImage(named: imageName)
+        topImage.snp.makeConstraints { make in
+            make.size.equalTo(CGSize(width: 146, height: 53))
+        }
+        return topImage
+    }
 
 
 }

@@ -17,6 +17,9 @@
 		7A14A10A29AA3F9C00B16C15 /* PuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A10929AA3F9C00B16C15 /* PuzzleTests.swift */; };
 		7A14A11429AA3F9C00B16C15 /* PuzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */; };
 		7A14A11629AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */; };
+		7A4A74A029AB914100C6BC4B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A749F29AB914100C6BC4B /* SettingsViewController.swift */; };
+		7A4A74A429ABA19500C6BC4B /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A74A329ABA19500C6BC4B /* WinViewController.swift */; };
+		7A4B47F629ABA1CC003A0FEA /* WinViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4B47F529ABA1CC003A0FEA /* WinViewController.storyboard */; };
 		7A9AE81C29AA4355000A7A3A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */; };
 		7A9AE81F29AA501E000A7A3A /* MenuButtonsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE81E29AA501E000A7A3A /* MenuButtonsSettings.swift */; };
 		7A9AE82129AA54E3000A7A3A /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AE82029AA54E3000A7A3A /* LevelsViewController.swift */; };
@@ -65,6 +68,9 @@
 		7A14A10F29AA3F9C00B16C15 /* PuzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITests.swift; sourceTree = "<group>"; };
 		7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7A4A749F29AB914100C6BC4B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7A4A74A329ABA19500C6BC4B /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
+		7A4B47F529ABA1CC003A0FEA /* WinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = WinViewController.storyboard; path = ../WinViewController.storyboard; sourceTree = "<group>"; };
 		7A9AE81B29AA4355000A7A3A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7A9AE81E29AA501E000A7A3A /* MenuButtonsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonsSettings.swift; sourceTree = "<group>"; };
 		7A9AE82029AA54E3000A7A3A /* LevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewController.swift; sourceTree = "<group>"; };
@@ -162,9 +168,27 @@
 			path = PuzzleUITests;
 			sourceTree = "<group>";
 		};
+		7A4A749E29AB913000C6BC4B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7A4A749F29AB914100C6BC4B /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7A4A74A729ABA1B600C6BC4B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				7A4A74A329ABA19500C6BC4B /* WinViewController.swift */,
+				7A4B47F529ABA1CC003A0FEA /* WinViewController.storyboard */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		7A9AE81A29AA4337000A7A3A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7A4A749E29AB913000C6BC4B /* Settings */,
 				7A14A0F629AA3F9C00B16C15 /* MainViewController.swift */,
 				7A9AE82D29AA69C2000A7A3A /* Play */,
 				7A9AE81D29AA4359000A7A3A /* Menu */,
@@ -213,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				7A9AE82E29AA69D9000A7A3A /* PlayViewController.swift */,
+				7A4A74A729ABA1B600C6BC4B /* New Group */,
 				7A9AE83629AA6CE8000A7A3A /* Puzzle */,
 			);
 			path = Play;
@@ -360,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A14A0FF29AA3F9C00B16C15 /* LaunchScreen.storyboard in Resources */,
+				7A4B47F629ABA1CC003A0FEA /* WinViewController.storyboard in Resources */,
 				7A9AE83529AA6CE3000A7A3A /* PuzzleCell.xib in Resources */,
 				7A14A0FC29AA3F9C00B16C15 /* Assets.xcassets in Resources */,
 				7A9AE82629AA5BE4000A7A3A /* PlayCellItem.xib in Resources */,
@@ -491,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A14A0F729AA3F9C00B16C15 /* MainViewController.swift in Sources */,
+				7A4A74A429ABA19500C6BC4B /* WinViewController.swift in Sources */,
 				7A14A0F329AA3F9C00B16C15 /* AppDelegate.swift in Sources */,
 				7A9AE82B29AA6089000A7A3A /* LevelsPresenter.swift in Sources */,
 				7A9AE82529AA5BE4000A7A3A /* PlayCellItem.swift in Sources */,
@@ -501,6 +528,7 @@
 				7A9AE82929AA5FA8000A7A3A /* LevelData.swift in Sources */,
 				7A9AE82129AA54E3000A7A3A /* LevelsViewController.swift in Sources */,
 				7A9AE81C29AA4355000A7A3A /* MenuViewController.swift in Sources */,
+				7A4A74A029AB914100C6BC4B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

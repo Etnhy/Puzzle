@@ -66,7 +66,8 @@ extension MenuViewController {
         case 0:
             self.navigationController?.pushViewController(LevelsViewController(), animated: true)
         case 1: print("1")
-        case 2: print("2")
+        case 2:
+            self.navigationController?.pushViewController(SettingsViewController(), animated: true)
         case 3: print("3")
         default: break
             

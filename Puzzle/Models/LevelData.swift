@@ -9,6 +9,7 @@ import Foundation
 
 struct LevelData {
     let mainLevelImage: String
+    let winLevelPictures: String
     let numberLevelImage: String
     let levelPuzzle: [String]
     let levelTime: Timer?
