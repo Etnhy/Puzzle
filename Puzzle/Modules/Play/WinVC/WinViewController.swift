@@ -10,21 +10,45 @@ import UIKit
 class WinViewController: UIViewController {
     static let identifier = "WinViewController"
 
-    @IBOutlet weak var winLab: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var bestTimeLabel: UILabel!
+    
+    @IBOutlet weak var nextLevelButton: UIButton!
+    
+    @IBOutlet weak var repeatLevelButton: UIButton!
+    
+    @IBOutlet weak var leaveToHomeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        addGestures()
+//        addGestures()
+        
         
     }
-    
+    @objc func cancelTapped() {
+        if parent!.children.count > 0 {
+            let mainChildren = parent!.children
+            
+            mainChildren.forEach { child in
+                let childName = String(describing: child.self)
+                let currentVCName = String(describing: self)
+                
+                if childName == currentVCName {
+                    child.willMove(toParent: nil)
+                    child.view.removeFromSuperview()
+                    child.removeFromParent()
+                    
+                }
+            }
+        }
+    }
 
     private func addGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
-        self.winLab.addGestureRecognizer(tap)
-        self.view.addGestureRecognizer(tap)
     }
     @objc func handleTap(_ sender: UITapGestureRecognizer?) {
             self.dismiss(animated: true, completion: nil)

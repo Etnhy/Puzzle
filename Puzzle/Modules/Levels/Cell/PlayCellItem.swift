@@ -15,7 +15,7 @@ class PlayCellItem: UICollectionViewCell {
     @IBOutlet weak var levelNumberImage: UILabel!
     
     var levelPuzzle:[String] = []
-    var levelTime = Timer()
+    var levelTime = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +25,7 @@ class PlayCellItem: UICollectionViewCell {
         self.mainLevelImage.image = UIImage(named: level.mainLevelImage)
         self.levelNumberImage.text = "\(level.numberLevelImage)"
         self.levelPuzzle = level.levelPuzzle
-        guard let leveltime = level.levelTime else { return }
-        self.levelTime = leveltime
+        self.levelTime = level.levelTime
     }
 
 }

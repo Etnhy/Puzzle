@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PlayViewController: MainViewController {
     
@@ -26,7 +27,7 @@ class PlayViewController: MainViewController {
         view.delegate = self
         view.register(UINib(nibName: PuzzleCell.identifier, bundle: nil), forCellWithReuseIdentifier: PuzzleCell.identifier)
         view.backgroundColor = .clear
-        view.backgroundColor = .yellow
+//        view.backgroundColor = .yellow
         return view
     }()
     
@@ -34,16 +35,30 @@ class PlayViewController: MainViewController {
        var view = UIImageView()
         return view
     }()
+    let repeatButton: UIButton = {
+       var button = UIButton()
+//        button.setBackgroundImage(UIImage(named: "ellipse"), for: .normal)
+//        button.imageView?.image = UIImage(named: "Vector 1")
+//        button.backgroundColor = .black
+        var conf = UIButton.Configuration.plain()
+        conf.image = UIImage(named: "Vector 1")
+        conf.background.image = UIImage(named: "ellipse")
+        button.configuration = conf
+        return button
+    }()
     
     private var unsolvedImages:[String]
     private var solvedImages:[String]
     private var winPic: String
+    private var time: Int
     
-    init(unsolvedImages: [String],solvedImages: [String], winPic: String) {
+    init(unsolvedImages: [String],solvedImages: [String], winPic: String,timer: Int) {
         self.unsolvedImages = unsolvedImages
         self.solvedImages = solvedImages
         self.winPic = winPic
+        self.time = timer
         super.init(nibName: nil, bundle: nil)
+        print(time)
 
     }
     
@@ -51,6 +66,8 @@ class PlayViewController: MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainBackButton.isHidden = false
+        
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
         playCollectionView.addGestureRecognizer(longPressGesture)
         setupView()
@@ -72,17 +89,20 @@ class PlayViewController: MainViewController {
         }
         
     }
+    
+     //MARK: - addSubviews + Constraints
     fileprivate func setupView () {
         view.addSubview(playCollectionView)
         view.addSubview(backGroundFrameImageView)
         view.addSubview(winPictures)
-                backGroundFrameImageView.snp.makeConstraints { make in
-                    make.top.equalTo(self.view).offset(118)
-                    make.leading.equalTo(self.view).offset(4)
-                    make.trailing.equalTo(self.view).inset(4)
-                    make.height.equalTo(357)
-                    make.centerX.equalTo(self.view)
-                }
+        view.addSubview( repeatButton )
+        backGroundFrameImageView.snp.makeConstraints { make in
+            make.top.equalTo(self.view).offset(118)
+            make.leading.equalTo(self.view).offset(4)
+            make.trailing.equalTo(self.view).inset(4)
+            make.height.equalTo(357)
+            make.centerX.equalTo(self.view)
+        }
         playCollectionView.snp.makeConstraints { make in
             make.top.equalTo(self.view.snp.top).offset(120)
             make.leading.equalTo(self.view).offset(30)
@@ -94,6 +114,20 @@ class PlayViewController: MainViewController {
             make.centerX.equalTo(self.view)
             make.size.equalTo(CGSize(width: 230, height: 230))
             
+        }
+        repeatButton.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(60)
+            make.leading.equalTo(self.mainBackButton.snp.trailing).offset(24)
+            make.size.equalTo(CGSize(width: 35, height: 35))
+        }
+        self.mainBackButton.layoutIfNeeded()
+        self.mainBackButton.imageView?.snp.remakeConstraints({ make in
+            make.size.equalTo(CGSize(width: 12.83, height: 21.58))
+        })
+        self.mainBackButton.snp.remakeConstraints { make in
+            make.top.equalTo(view).offset(60)
+            make.size.equalTo(CGSize(width: 35, height: 35))
+            make.leading.equalTo(view).offset(22)
         }
     }
     

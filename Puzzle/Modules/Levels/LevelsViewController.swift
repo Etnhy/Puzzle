@@ -77,8 +77,12 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        print(levels[indexPath.item].levelPuzzle.shuffled())
-        navigationController?.pushViewController(PlayViewController(unsolvedImages: levels[indexPath.item].unsolvedImages, solvedImages: levels[indexPath.item].levelPuzzle,winPic: levels[indexPath.item].winLevelPictures), animated: true)
-//        navigationController?.pushViewController(PlayViewController(playImagesString: levels[indexPath.item].levelPuzzle), animated: true)
+        navigationController?.pushViewController(PlayViewController(
+            unsolvedImages: levels[indexPath.item].levelPuzzle,
+            solvedImages: levels[indexPath.item].levelPuzzle,
+            winPic: levels[indexPath.item].winLevelPictures,
+            timer: levels[indexPath.item].levelTime), animated: true)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
