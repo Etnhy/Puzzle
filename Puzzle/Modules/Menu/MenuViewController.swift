@@ -17,7 +17,7 @@ class MenuViewController: MainViewController {
             config.background.image = UIImage(named: button.backGroundImage)
             config.baseForegroundColor = UIColor.white
             
-            config.attributedTitle = AttributedString(button.buttonsTitle, attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.knewaveFont(ofSize: 30)]) )
+            config.attributedTitle = AttributedString(button.buttonsTitle, attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.knewaveRegular(ofSize: 34) ]))
             butt.tag = button.setIndex
             butt.configuration = config
             butt.addTarget(self, action: #selector(buttonsAction(_:)), for: .touchUpInside)
@@ -46,6 +46,10 @@ class MenuViewController: MainViewController {
     private func addSubviews() {
         self.view.addSubview(buttonStackView)
         setupConstraints()
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
     }
     
     //MARK: - Setup Constraints

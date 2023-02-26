@@ -17,6 +17,9 @@
 		7A14A10A29AA3F9C00B16C15 /* PuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A10929AA3F9C00B16C15 /* PuzzleTests.swift */; };
 		7A14A11429AA3F9C00B16C15 /* PuzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */; };
 		7A14A11629AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */; };
+		7A3A1F8C29ABAFC5006FABAE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A1F8B29ABAFC5006FABAE /* Fonts.swift */; };
+		7A3A1F8E29ABB1FF006FABAE /* knewave.outline-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3A1F8D29ABB1FF006FABAE /* knewave.outline-regular.ttf */; };
+		7A3A1F9029ABB2CA006FABAE /* knewave.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3A1F8F29ABB2CA006FABAE /* knewave.regular.ttf */; };
 		7A4A74A029AB914100C6BC4B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A749F29AB914100C6BC4B /* SettingsViewController.swift */; };
 		7A4A74A429ABA19500C6BC4B /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A74A329ABA19500C6BC4B /* WinViewController.swift */; };
 		7A4B47F629ABA1CC003A0FEA /* WinViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4B47F529ABA1CC003A0FEA /* WinViewController.storyboard */; };
@@ -68,6 +71,9 @@
 		7A14A10F29AA3F9C00B16C15 /* PuzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A14A11329AA3F9C00B16C15 /* PuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITests.swift; sourceTree = "<group>"; };
 		7A14A11529AA3F9C00B16C15 /* PuzzleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7A3A1F8B29ABAFC5006FABAE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		7A3A1F8D29ABB1FF006FABAE /* knewave.outline-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "knewave.outline-regular.ttf"; sourceTree = "<group>"; };
+		7A3A1F8F29ABB2CA006FABAE /* knewave.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = knewave.regular.ttf; sourceTree = "<group>"; };
 		7A4A749F29AB914100C6BC4B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7A4A74A329ABA19500C6BC4B /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
 		7A4B47F529ABA1CC003A0FEA /* WinViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = WinViewController.storyboard; path = ../WinViewController.storyboard; sourceTree = "<group>"; };
@@ -168,6 +174,16 @@
 			path = PuzzleUITests;
 			sourceTree = "<group>";
 		};
+		7A3A1F8A29ABAF9B006FABAE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7A3A1F8D29ABB1FF006FABAE /* knewave.outline-regular.ttf */,
+				7A3A1F8F29ABB2CA006FABAE /* knewave.regular.ttf */,
+				7A3A1F8B29ABAFC5006FABAE /* Fonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		7A4A749E29AB913000C6BC4B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +244,7 @@
 		7A9AE82C29AA641B000A7A3A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7A3A1F8A29ABAF9B006FABAE /* Fonts */,
 				7A9AE82829AA5FA8000A7A3A /* LevelData.swift */,
 			);
 			path = Models;
@@ -385,8 +402,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A14A0FF29AA3F9C00B16C15 /* LaunchScreen.storyboard in Resources */,
+				7A3A1F8E29ABB1FF006FABAE /* knewave.outline-regular.ttf in Resources */,
 				7A4B47F629ABA1CC003A0FEA /* WinViewController.storyboard in Resources */,
 				7A9AE83529AA6CE3000A7A3A /* PuzzleCell.xib in Resources */,
+				7A3A1F9029ABB2CA006FABAE /* knewave.regular.ttf in Resources */,
 				7A14A0FC29AA3F9C00B16C15 /* Assets.xcassets in Resources */,
 				7A9AE82629AA5BE4000A7A3A /* PlayCellItem.xib in Resources */,
 			);
@@ -516,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A3A1F8C29ABAFC5006FABAE /* Fonts.swift in Sources */,
 				7A14A0F729AA3F9C00B16C15 /* MainViewController.swift in Sources */,
 				7A4A74A429ABA19500C6BC4B /* WinViewController.swift in Sources */,
 				7A14A0F329AA3F9C00B16C15 /* AppDelegate.swift in Sources */,
