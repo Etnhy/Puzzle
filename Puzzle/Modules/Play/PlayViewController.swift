@@ -27,7 +27,6 @@ class PlayViewController: MainViewController {
         view.delegate = self
         view.register(UINib(nibName: PuzzleCell.identifier, bundle: nil), forCellWithReuseIdentifier: PuzzleCell.identifier)
         view.backgroundColor = .clear
-//        view.backgroundColor = .yellow
         return view
     }()
     
@@ -37,9 +36,6 @@ class PlayViewController: MainViewController {
     }()
     let repeatButton: UIButton = {
        var button = UIButton()
-//        button.setBackgroundImage(UIImage(named: "ellipse"), for: .normal)
-//        button.imageView?.image = UIImage(named: "Vector 1")
-//        button.backgroundColor = .black
         var conf = UIButton.Configuration.plain()
         conf.image = UIImage(named: "Vector 1")
         conf.background.image = UIImage(named: "ellipse")
@@ -47,33 +43,63 @@ class PlayViewController: MainViewController {
         return button
     }()
     
+    var levelCount:BackAndLivelTime = {
+        var view = BackAndLivelTime()
+        return view
+    }()
+    
+    
+    @objc var startTimer:BackAndLivelTime = {
+        var view = BackAndLivelTime()
+        return view
+    }()
+    
     private var unsolvedImages:[String]
     private var solvedImages:[String]
     private var winPic: String
-    private var time: Int
+    private var remainingTime: Int
+    private var timer: Timer?
     
-    init(unsolvedImages: [String],solvedImages: [String], winPic: String,timer: Int) {
+    init(
+        unsolvedImages: [String],
+        solvedImages: [String],
+        winPic: String,
+        remainingTime: Int,
+        levelNumber: Int
+    ) {
         self.unsolvedImages = unsolvedImages
         self.solvedImages = solvedImages
         self.winPic = winPic
-        self.time = timer
+        self.levelCount.titleLabel.text = "LVL-\(levelNumber)"
+        self.remainingTime = remainingTime
         super.init(nibName: nil, bundle: nil)
         print(time)
 
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainBackButton.isHidden = false
-        
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
         playCollectionView.addGestureRecognizer(longPressGesture)
         setupView()
         self.winPictures.image = UIImage(named: winPic)
-        
+        startGameTimer()
     }
+    func startGameTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+    }
+
+    @objc func updateTimer() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+            print("\(remainingTime) seconds left")
+        } else {
+            timer!.invalidate()
+            print("Time's up!")
+        }
+    }
+    
     @objc private func longPressed(_ gesture: UILongPressGestureRecognizer) {
         let gestureLocation = gesture.location(in: self.playCollectionView)
         switch gesture.state {
@@ -89,6 +115,7 @@ class PlayViewController: MainViewController {
         }
         
     }
+
     
      //MARK: - addSubviews + Constraints
     fileprivate func setupView () {
@@ -96,6 +123,7 @@ class PlayViewController: MainViewController {
         view.addSubview(backGroundFrameImageView)
         view.addSubview(winPictures)
         view.addSubview( repeatButton )
+        view.addSubview(levelCount)
         backGroundFrameImageView.snp.makeConstraints { make in
             make.top.equalTo(self.view).offset(118)
             make.leading.equalTo(self.view).offset(4)
@@ -129,7 +157,15 @@ class PlayViewController: MainViewController {
             make.size.equalTo(CGSize(width: 35, height: 35))
             make.leading.equalTo(view).offset(22)
         }
+        levelCount.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(60)
+            make.leading.equalTo(repeatButton.snp.trailing).offset(32)
+        }
+        otherSettings()
     }
+    //MARK: -  Other Settings
+   fileprivate func otherSettings() {
+   }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

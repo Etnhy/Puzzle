@@ -81,7 +81,8 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
             unsolvedImages: levels[indexPath.item].levelPuzzle,
             solvedImages: levels[indexPath.item].levelPuzzle,
             winPic: levels[indexPath.item].winLevelPictures,
-            timer: levels[indexPath.item].levelTime), animated: true)
+            remainingTime: levels[indexPath.item].levelTime,
+            levelNumber: levels[indexPath.item].levelNumber), animated: true)
         
     }
     
