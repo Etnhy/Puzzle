@@ -232,10 +232,12 @@ extension PlayViewController: UICollectionViewDelegate {
         let item = unsolvedImages.remove(at: sourceIndexPath.row)
         
         unsolvedImages.insert(item, at: destinationIndexPath.row)
-        
         if unsolvedImages == solvedImages {
             timer?.invalidate()
             winViewController(gameTime: self.newTime.formatTime())
+        } else if newTime <= 0 {
+            timer?.invalidate()
+            failViewController()
         }
     }
 }
@@ -244,6 +246,7 @@ extension PlayViewController: UICollectionViewDelegate {
 extension PlayViewController {
     func winViewController(gameTime: String ) {
         let win = UIStoryboard(name: WinViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: WinViewController.identifier) as! WinViewController
+        
         self.addChild(win)
         self.view.addSubview(win.view)
         win.timeLabel.text = gameTime
@@ -255,8 +258,21 @@ extension PlayViewController {
         win.leaveToHomeButton.addTarget(self, action: #selector(gotoHome), for: .touchUpInside)
         win.repeatLevelButton.addTarget(self, action: #selector(resetLevel), for: .touchUpInside)
     }
+    
+    func failViewController() {
+        let fail = UIStoryboard(name: FailGameViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: FailGameViewController.identifier) as! FailGameViewController
+        self.addChild(fail)
+        self.view.addSubview(fail.view)
+        fail.view.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(self.view)
+            make.top.bottom.equalTo(self.view)
+        }
+
+
+    }
 }
 
+ //MARK: - go to home
 extension PlayViewController {
     @objc func gotoHome() {
         let main = MenuViewController()
