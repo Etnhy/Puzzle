@@ -214,8 +214,8 @@
 		7A9AE81A29AA4337000A7A3A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				7A4A749E29AB913000C6BC4B /* Settings */,
 				7A14A0F629AA3F9C00B16C15 /* MainViewController.swift */,
+				7A4A749E29AB913000C6BC4B /* Settings */,
 				7A9AE82D29AA69C2000A7A3A /* Play */,
 				7A9AE81D29AA4359000A7A3A /* Menu */,
 				7A9AE82229AA54E7000A7A3A /* Levels */,

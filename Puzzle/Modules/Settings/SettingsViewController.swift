@@ -23,7 +23,7 @@ class SettingsViewController: MainViewController {
     
     let soundCheckbox: UIButton = {
        var button = UIButton()
-        button.setBackgroundImage(UIImage(named: "checked=yes"), for: .normal)
+//        button.setBackgroundImage(UIImage(named: "checked=yes"), for: .normal)
         return button
     }()
     
@@ -52,6 +52,11 @@ class SettingsViewController: MainViewController {
         super.viewDidLoad()
         self.backgroundImageCandy.isHidden = true
         self.mainBackButton.isHidden = false
+        
+        self.soundCheckbox.setImage(
+            player.isMuted ? UIImage(named: "checked=no") : UIImage(named: "checked=no") , for: .normal)
+        
+        
         setupView()
         setupButtonConfig()
         setupActions()
@@ -60,7 +65,6 @@ class SettingsViewController: MainViewController {
     fileprivate func setupView() {
         self.view.addSubview(soundButton)
         self.view.addSubview(soundCheckbox)
-        
         self.view.addSubview(vibroButton)
         self.view.addSubview(vibroCheckbox)
         self.view.addSubview(rateUsButton)
@@ -96,7 +100,6 @@ class SettingsViewController: MainViewController {
         rateUsButton.snp.makeConstraints { make in
             make.top.equalTo(vibroButton.snp.bottom).offset(16)
             make.size.equalTo(CGSize(width: 350, height: 70))
-//            make.centerX.equalTo(view)
             make.leading.equalTo(self.view).offset(16)
             
         }
