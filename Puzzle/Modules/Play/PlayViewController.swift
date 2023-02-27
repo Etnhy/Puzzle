@@ -113,14 +113,14 @@ class PlayViewController: MainViewController {
             print("ты все выиграл")
         } else {
             levelNumber += 1
-            let nextLevel = levels[levelNumber - 1 ]
-            
+            var nextLevel = levels[levelNumber - 1 ]
+            nextLevel.isComplete = true
             self.remainingTime = nextLevel.levelTime
             self.newTime = remainingTime
-            print(nextLevel.levelNumber)
             self.levelCount.titleLabel.text = "LVL-\(nextLevel.levelNumber)"
             self.unsolvedImages = nextLevel.unsolvedImages
             self.winPictures.image = UIImage(named: nextLevel.winLevelPictures)
+            
             self.playCollectionView.reloadData()
             startGameTimer()
         }

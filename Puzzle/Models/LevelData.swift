@@ -15,6 +15,8 @@ struct LevelData {
     let levelTime: Int
     let levelNumber: Int
     
+    var isComplete: Bool
+    
     
     var unsolvedImages: [String] {
         return levelPuzzle.shuffled()

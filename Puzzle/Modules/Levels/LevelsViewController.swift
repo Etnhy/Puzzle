@@ -29,6 +29,11 @@ class LevelsViewController: MainViewController {
 
     
     var presenter: LevelsPresenter?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.levelsCollectionView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = LevelsPresenter(view: self)
@@ -77,6 +82,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         navigationController?.pushViewController(PlayViewController(
+             //MARK: - NEED USOLVED
             unsolvedImages: levels[indexPath.item].levelPuzzle,
             solvedImages: levels[indexPath.item].levelPuzzle,
             winPic: levels[indexPath.item].winLevelPictures,
@@ -97,3 +103,4 @@ extension LevelsViewController: LevelsProtocol {
     
     
 }
+
