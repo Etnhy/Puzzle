@@ -9,6 +9,8 @@ import UIKit
 
 class LevelsViewController: MainViewController {
     
+    fileprivate var mainLevels = levels
+    
     let levelsTopTitle: UIImageView = {
        var view = UIImageView()
         view.image = UIImage(named: "levels")
@@ -83,11 +85,11 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         navigationController?.pushViewController(PlayViewController(
              //MARK: - NEED USOLVED
-            unsolvedImages: levels[indexPath.item].levelPuzzle,
-            solvedImages: levels[indexPath.item].levelPuzzle,
-            winPic: levels[indexPath.item].winLevelPictures,
-            remainingTime: levels[indexPath.item].levelTime,
-            levelNumber: levels[indexPath.item].levelNumber), animated: true)
+            unsolvedImages: mainLevels[indexPath.item].levelPuzzle,
+            solvedImages: mainLevels[indexPath.item].levelPuzzle,
+            winPic: mainLevels[indexPath.item].winLevelPictures,
+            remainingTime: mainLevels[indexPath.item].levelTime,
+            levelNumber: mainLevels[indexPath.item].levelNumber), animated: true)
         
     }
     
@@ -98,7 +100,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
 }
 extension LevelsViewController: LevelsProtocol {
     func setLevels(levels: [LevelData]) {
-//        print(levels)
+        self.mainLevels = levels
     }
     
     

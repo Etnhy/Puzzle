@@ -65,10 +65,10 @@ extension MenuViewController {
         switch sender.tag {
         case 0:
             self.navigationController?.pushViewController(LevelsViewController(), animated: true)
-        case 1: print("1")
+        case 1: print("Game Rules")
         case 2:
             self.navigationController?.pushViewController(SettingsViewController(), animated: true)
-        case 3: print("3")
+        case 3: print("Privacy Policy")
         default: break
             
         }

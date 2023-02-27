@@ -90,7 +90,6 @@ class PlayViewController: MainViewController {
         self.remainingTime = remainingTime
         self.newTime = remainingTime
         super.init(nibName: nil, bundle: nil)
-        print(self.levelNumber)
 
     }
 
@@ -132,8 +131,6 @@ class PlayViewController: MainViewController {
             self.startTimerLabel.titleLabel.text = newTime.formatTime()
         } else {
             timer?.invalidate()
-            
-            print("Time's up!")
         }
     }
     @objc func resetLevel() {

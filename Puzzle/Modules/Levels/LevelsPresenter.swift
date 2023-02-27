@@ -28,7 +28,6 @@ class LevelsPresenter: LevelsViewProtocol {
     
     func createLevelData() {
         self.view?.setLevels(levels: levels)
-        print("create level data")
     }
     func createLevelsCount() -> Int {
         return levels.count
