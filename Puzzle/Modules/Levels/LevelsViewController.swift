@@ -85,7 +85,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         navigationController?.pushViewController(PlayViewController(
              //MARK: - NEED USOLVED
-            unsolvedImages: mainLevels[indexPath.item].levelPuzzle,
+            unsolvedImages: mainLevels[indexPath.item].unsolvedImages,
             solvedImages: mainLevels[indexPath.item].levelPuzzle,
             winPic: mainLevels[indexPath.item].winLevelPictures,
             remainingTime: mainLevels[indexPath.item].levelTime,

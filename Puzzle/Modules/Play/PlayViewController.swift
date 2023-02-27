@@ -134,7 +134,9 @@ class PlayViewController: MainViewController {
         }
     }
     @objc func resetLevel() {
+        
         DispatchQueue.main.async {
+            self.timer?.invalidate()
             self.unsolvedImages.shuffle()
             self.newTime = self.remainingTime
             self.playCollectionView.reloadData()
