@@ -14,8 +14,6 @@ class PuzzleCell: UICollectionViewCell {
     var text = ""
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
 
 }

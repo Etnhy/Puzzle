@@ -10,7 +10,14 @@ import SnapKit
 
 class PlayViewController: MainViewController {
     
+    
     lazy var backGroundFrameImageView: UIImageView = {
+        var view = UIImageView()
+        view.image = UIImage(named:"candy_frame")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    lazy var backGroundFrameImageViewbottom: UIImageView = {
         var view = UIImageView()
         view.image = UIImage(named:"candy_frame")
         view.contentMode = .scaleAspectFit
@@ -34,12 +41,13 @@ class PlayViewController: MainViewController {
        var view = UIImageView()
         return view
     }()
-    let repeatButton: UIButton = {
+    lazy var repeatButton: UIButton = {
        var button = UIButton()
         var conf = UIButton.Configuration.plain()
-        conf.image = UIImage(named: "Vector 1")
+        conf.image = UIImage(named: "Vector075")
         conf.background.image = UIImage(named: "ellipse")
         button.configuration = conf
+        button.addTarget(self, action: #selector(resetLevel), for: .touchUpInside)
         return button
     }()
     
@@ -49,7 +57,7 @@ class PlayViewController: MainViewController {
     }()
     
     
-    @objc var startTimer:BackAndLivelTime = {
+     var startTimerLabel:BackAndLivelTime = {
         var view = BackAndLivelTime()
         return view
     }()
@@ -57,7 +65,12 @@ class PlayViewController: MainViewController {
     private var unsolvedImages:[String]
     private var solvedImages:[String]
     private var winPic: String
+    
+    /// время которое дается на уровень
     private var remainingTime: Int
+    /// время за которое удалось пройти уровень
+    private var newTime:Int
+
     private var timer: Timer?
     
     init(
@@ -72,6 +85,7 @@ class PlayViewController: MainViewController {
         self.winPic = winPic
         self.levelCount.titleLabel.text = "LVL-\(levelNumber)"
         self.remainingTime = remainingTime
+        self.newTime = remainingTime
         super.init(nibName: nil, bundle: nil)
         print(time)
 
@@ -91,12 +105,21 @@ class PlayViewController: MainViewController {
     }
 
     @objc func updateTimer() {
-        if remainingTime > 0 {
-            remainingTime -= 1
-            print("\(remainingTime) seconds left")
+        if newTime > 0 {
+            newTime -= 1
+            self.startTimerLabel.titleLabel.text = newTime.formatTime()
         } else {
             timer!.invalidate()
             print("Time's up!")
+        }
+    }
+    @objc func resetLevel() {
+        DispatchQueue.main.async {
+            self.unsolvedImages.shuffle()
+            self.newTime = self.remainingTime
+            self.playCollectionView.reloadData()
+            self.startGameTimer()
+
         }
     }
     
@@ -115,6 +138,7 @@ class PlayViewController: MainViewController {
         }
         
     }
+    
 
     
      //MARK: - addSubviews + Constraints
@@ -124,6 +148,8 @@ class PlayViewController: MainViewController {
         view.addSubview(winPictures)
         view.addSubview( repeatButton )
         view.addSubview(levelCount)
+        view.addSubview(startTimerLabel)
+        view.addSubview(backGroundFrameImageViewbottom)
         backGroundFrameImageView.snp.makeConstraints { make in
             make.top.equalTo(self.view).offset(118)
             make.leading.equalTo(self.view).offset(4)
@@ -135,7 +161,8 @@ class PlayViewController: MainViewController {
             make.top.equalTo(self.view.snp.top).offset(120)
             make.leading.equalTo(self.view).offset(30)
             make.trailing.equalTo(self.view).inset(30)
-            make.height.equalTo(400)
+//            make.height.equalTo(400)
+            make.bottom.equalTo(self.backGroundFrameImageView.snp.bottom)
         }
         winPictures.snp.makeConstraints { make in
             make.top.equalTo(playCollectionView.snp.bottom).offset(20)
@@ -161,6 +188,14 @@ class PlayViewController: MainViewController {
             make.top.equalTo(view).offset(60)
             make.leading.equalTo(repeatButton.snp.trailing).offset(32)
         }
+        startTimerLabel.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(60)
+            make.leading.equalTo(levelCount.snp.trailing).offset(24)
+        }
+        backGroundFrameImageViewbottom.snp.makeConstraints { make in
+            make.size.equalTo(CGSize(width: 240, height: 240))
+            make.center.equalTo(winPictures)
+        }
         otherSettings()
     }
     //MARK: -  Other Settings
@@ -183,6 +218,7 @@ extension PlayViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             return UICollectionViewCell()
         }
         cell.puzzleImage.image = UIImage(named: unsolvedImages[indexPath.item])
+
         return cell
     }
     
@@ -198,16 +234,32 @@ extension PlayViewController: UICollectionViewDelegate {
         unsolvedImages.insert(item, at: destinationIndexPath.row)
         
         if unsolvedImages == solvedImages {
-            let win = UIStoryboard(name: WinViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: WinViewController.identifier) as! WinViewController
-            self.addChild(win)
-            self.view.addSubview(win.view)
-            win.view.snp.makeConstraints { make in
-                make.leading.trailing.equalTo(self.view)
-                make.top.bottom.equalTo(self.view)
-            }
+            timer?.invalidate()
+            winViewController(gameTime: self.newTime.formatTime())
         }
     }
 }
 
 
+extension PlayViewController {
+    func winViewController(gameTime: String ) {
+        let win = UIStoryboard(name: WinViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: WinViewController.identifier) as! WinViewController
+        self.addChild(win)
+        self.view.addSubview(win.view)
+        win.timeLabel.text = gameTime
+        win.bestTimeLabel.text = gameTime
+        win.view.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(self.view)
+            make.top.bottom.equalTo(self.view)
+        }
+        win.leaveToHomeButton.addTarget(self, action: #selector(gotoHome), for: .touchUpInside)
+        win.repeatLevelButton.addTarget(self, action: #selector(resetLevel), for: .touchUpInside)
+    }
+}
 
+extension PlayViewController {
+    @objc func gotoHome() {
+        let main = MenuViewController()
+        self.navigationController?.setViewControllers([main], animated: false)
+    }
+}

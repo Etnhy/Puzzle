@@ -155,7 +155,7 @@
                         <outlet property="leaveToHomeButton" destination="hOl-Vf-utP" id="xFA-gJ-FHj"/>
                         <outlet property="nextLevelButton" destination="nY2-ca-IQW" id="fNa-1O-T7M"/>
                         <outlet property="repeatLevelButton" destination="ZOP-ab-FuR" id="mjE-yn-gl9"/>
-                        <outlet property="timeLabel" destination="5yf-kt-pH2" id="xTr-jv-d1z"/>
+                        <outlet property="timeLabel" destination="5yf-kt-pH2" id="5VC-5x-9En"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

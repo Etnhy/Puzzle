@@ -27,5 +27,6 @@ class PlayCellItem: UICollectionViewCell {
         self.levelPuzzle = level.levelPuzzle
         self.levelTime = level.levelTime
     }
+    
 
 }
