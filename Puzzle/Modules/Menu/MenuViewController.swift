@@ -16,7 +16,7 @@ class MenuViewController: MainViewController {
             var config = UIButton.Configuration.tinted()
             config.background.image = UIImage(named: button.backGroundImage)
             config.baseForegroundColor = UIColor.white
-            
+            config.baseBackgroundColor = .clear
             config.attributedTitle = AttributedString(button.buttonsTitle, attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.knewaveRegular(ofSize: 34) ]))
             butt.tag = button.setIndex
             butt.configuration = config

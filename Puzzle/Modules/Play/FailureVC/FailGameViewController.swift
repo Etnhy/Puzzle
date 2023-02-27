@@ -14,6 +14,7 @@ class FailGameViewController: UIViewController {
     
     @IBOutlet weak var resetLevelButton: UIButton!
     
+    @IBOutlet weak var failTimeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

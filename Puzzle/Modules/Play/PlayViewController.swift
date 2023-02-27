@@ -70,7 +70,7 @@ class PlayViewController: MainViewController {
     private var remainingTime: Int
     /// время за которое удалось пройти уровень
     private var newTime:Int
-
+    private var levelNumber: Int
     private var timer: Timer?
     
     init(
@@ -84,10 +84,11 @@ class PlayViewController: MainViewController {
         self.solvedImages = solvedImages
         self.winPic = winPic
         self.levelCount.titleLabel.text = "LVL-\(levelNumber)"
+        self.levelNumber = levelNumber
         self.remainingTime = remainingTime
         self.newTime = remainingTime
         super.init(nibName: nil, bundle: nil)
-        print(time)
+        print(self.levelNumber)
 
     }
 
@@ -104,12 +105,32 @@ class PlayViewController: MainViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
 
+    @objc func nextLevelAction() {
+        timer?.invalidate()
+        if levelNumber >= 3 {
+            print("ты все выиграл")
+        } else {
+            levelNumber += 1
+            let nextLevel = levels[levelNumber - 1 ]
+            
+            self.remainingTime = nextLevel.levelTime
+            self.newTime = remainingTime
+            print(nextLevel.levelNumber)
+            self.levelCount.titleLabel.text = "LVL-\(nextLevel.levelNumber)"
+            self.unsolvedImages = nextLevel.unsolvedImages
+            self.winPictures.image = UIImage(named: nextLevel.winLevelPictures)
+            self.playCollectionView.reloadData()
+            startGameTimer()
+        }
+        
+    }
     @objc func updateTimer() {
         if newTime > 0 {
             newTime -= 1
             self.startTimerLabel.titleLabel.text = newTime.formatTime()
         } else {
-            timer!.invalidate()
+            timer?.invalidate()
+            
             print("Time's up!")
         }
     }
@@ -235,14 +256,15 @@ extension PlayViewController: UICollectionViewDelegate {
         if unsolvedImages == solvedImages {
             timer?.invalidate()
             winViewController(gameTime: self.newTime.formatTime())
+//            failViewController(failLabel: self.newTime.formatTime())
         } else if newTime <= 0 {
             timer?.invalidate()
-            failViewController()
+            failViewController(failLabel: self.newTime.formatTime())
         }
     }
 }
 
-
+ //MARK: - fail and win childs
 extension PlayViewController {
     func winViewController(gameTime: String ) {
         let win = UIStoryboard(name: WinViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: WinViewController.identifier) as! WinViewController
@@ -257,16 +279,21 @@ extension PlayViewController {
         }
         win.leaveToHomeButton.addTarget(self, action: #selector(gotoHome), for: .touchUpInside)
         win.repeatLevelButton.addTarget(self, action: #selector(resetLevel), for: .touchUpInside)
+        win.nextLevelButton.addTarget(self, action: #selector(nextLevelAction), for: .touchUpInside)
     }
     
-    func failViewController() {
+    func failViewController(failLabel: String) {
         let fail = UIStoryboard(name: FailGameViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: FailGameViewController.identifier) as! FailGameViewController
         self.addChild(fail)
         self.view.addSubview(fail.view)
+        fail.failTimeLabel.text = failLabel
+
         fail.view.snp.makeConstraints { make in
             make.leading.trailing.equalTo(self.view)
             make.top.bottom.equalTo(self.view)
         }
+        fail.resetLevelButton.addTarget(self, action: #selector(resetLevel), for: .touchUpInside)
+        fail.leavetoHomeButton.addTarget(self, action: #selector(gotoHome), for: .touchUpInside)
 
 
     }
