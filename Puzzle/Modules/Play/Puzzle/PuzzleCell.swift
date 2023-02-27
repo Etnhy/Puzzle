@@ -14,6 +14,8 @@ class PuzzleCell: UICollectionViewCell {
     var text = ""
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.clipsToBounds = true
+        self.puzzleImage.clipsToBounds = true
     }
 
 }

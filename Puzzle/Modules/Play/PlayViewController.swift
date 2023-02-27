@@ -21,6 +21,7 @@ class PlayViewController: MainViewController {
         var view = UIImageView()
         view.image = UIImage(named:"candy_frame")
         view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
         return view
     }()
     
@@ -34,6 +35,7 @@ class PlayViewController: MainViewController {
         view.delegate = self
         view.register(UINib(nibName: PuzzleCell.identifier, bundle: nil), forCellWithReuseIdentifier: PuzzleCell.identifier)
         view.backgroundColor = .clear
+        view.clipsToBounds = true
         return view
     }()
     
@@ -239,7 +241,7 @@ extension PlayViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             return UICollectionViewCell()
         }
         cell.puzzleImage.image = UIImage(named: unsolvedImages[indexPath.item])
-
+        
         return cell
     }
     
